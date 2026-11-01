@@ -12,3 +12,9 @@ This repo documents what I learn, with notes and small projects.
 - `linux/` - command notes and Bandit write-ups
 - `networking/` - networking notes
 - `scripts/` - small Bash scripts
+
+- ## Progress
+- [x] Linux fundamentals (Udemy + Turkcell)
+- [x] OverTheWire Bandit: Levels 0-10
+- [x] Networking fundamentals (OSI, TCP/IP, DNS)
+- [ ] TryHackMe Pre Security
