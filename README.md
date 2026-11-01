@@ -13,7 +13,7 @@ This repo documents what I learn, with notes and small projects.
 - `networking/` - networking notes
 - `scripts/` - small Bash scripts
 
-- ## Progress
+## Progress
 - [x] Linux fundamentals (Udemy + Turkcell)
 - [x] OverTheWire Bandit: Levels 0-10
 - [x] Networking fundamentals (OSI, TCP/IP, DNS)
