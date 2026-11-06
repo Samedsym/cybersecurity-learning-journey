@@ -137,6 +137,42 @@ Alt katmanlar 4-3-2-1
 - TCP/IP'de Network Access, OSI'nin alt 2 katmanını (2, 1) birlikte karşılar.
 - OSI teorik referans modeldir, TCP/IP internetin gerçekte kullandığı modeldir.
 
+## Ağ Medyası
+Veri iletişimini sağlayan kablolu veya kablosuz ortam.
 
+Bakır Kablolar: En sık kullanılan alan yerel ağlar(LAN).
+Fiber Optik Kablolar: Işık hızına yakın bi hızda iletişim sağlar.
+Kablosuz İletim:Verinin elektromanyetik dalgalar aracılığıyla iletilmesini sağlar.
 
+### Terms Note 
+Elektromanyetik Parazit = EMI
 
+## Cat Cable Standards
+
+| Category | Max speed               | Bandwidth | Max distance | Shielding       |
+|----------|-------------------------|-----------|--------------|-----------------|
+| Cat 3    | 10 Mbps                 | 16 MHz    | 100 m        | None (UTP)      |
+| Cat 5    | 100 Mbps                | 100 MHz   | 100 m        | Mostly UTP      |
+| Cat 5e   | 1 Gbps                  | 100 MHz   | 100 m        | UTP / STP       |
+| Cat 6    | 1G (100 m) / 10G (55 m) | 250 MHz   | 100 m / 55 m | UTP or STP      |
+| Cat 6a   | 10 Gbps                 | 500 MHz   | 100 m        | Mostly STP      |
+| Cat 7    | 10 Gbps                 | 600 MHz   | 100 m        | Full (S/FTP)    |
+| Cat 7a   | 10 Gbps (up to 40)      | 1000 MHz  | 100 m        | S/FTP           |
+| Cat 8    | 25-40 Gbps              | 2000 MHz  | 30 m         | S/FTP           |
+
+## Where each is used
+
+- Cat 3: eski telefon ve 10Base-T ağları.
+- Cat 5: eski Ethernet ağları (100Base-T).
+- Cat 5e: günümüzde yaygın (Gigabit Ethernet).
+- Cat 6: ofisler ve modern ağlar.
+- Cat 6a: yoğun veri trafiği olan yapılar.
+- Cat 7: veri merkezleri, endüstriyel ağlar.
+- Cat 7a: yüksek hızlı profesyonel ortamlar.
+- Cat 8: veri merkezleri, kısa mesafede yüksek hız.
+
+## Key terms
+- UTP (Unshielded Twisted Pair): ekransız bükümlü çift kablo.
+- STP (Shielded Twisted Pair): ekranlı, parazite daha dayanıklı.
+- S/FTP: hem çiftler hem tüm kablo ekranlı.
+- Ekranlama, elektriksel parazite (girişim) karşı korur.
