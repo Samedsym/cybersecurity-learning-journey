@@ -84,3 +84,22 @@ Tek ISS ile çalışır. Yedeklilik yok.
 Dual-Carrier
 İki farklı ISS var. Yedeklilik var. Karmaşık yönetim, daha fazla maliyet.
 
+
+## İletişimin Temelleri
+1. Gönderen / Kaynak 'Source'
+2. Ortam Transmission Media
+3. Alıcı / Heded 'Receiver'
+
+Ön İletişim = Handshake
+
+### Protokol Yığını
+
+HTTP: Hypertext Transfer Protocol
+Web sunucusu ile istemcisi arasındaki etkileşimi yönetir.
+
+TCP: Bireysel veri alışverişlerini yönetir.
+
+IP: Mesajların göndericiden alıcıya ulaştırılmasında sorumludur.
+
+Ethernet: Aynı yerel ağ 'LAN' üzerindeki iki ağ kartı arasında mesaj iletimini sağlar
+
