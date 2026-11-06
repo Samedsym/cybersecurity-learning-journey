@@ -103,3 +103,40 @@ IP: Mesajların göndericiden alıcıya ulaştırılmasında sorumludur.
 
 Ethernet: Aynı yerel ağ 'LAN' üzerindeki iki ağ kartı arasında mesaj iletimini sağlar
 
+# OSI (Open System Interconnection)
+### SENDER
+7-Application/Uygulama: İşlemden işleme iletişim için kullanılan protokolleri içerir.
+6-Presentation/Sunum: Uygulama katmanı servisleri arasında aktarılan verilerin ortak temsilini sağlar.
+5-Session/Oturum: Sunum katmanına iletişim diyaloğunu organize etme ve veri değişimini yöentme servislerini sunar.
+4-Transport/Taşıma: Uç cihazlar arasındaki bireysel iletişimler için veriyi segmentlere ayırma, aktarma ve yeniden birleştirme servislerini tanımlar.
+3-Network/Ağ: Tanımlanmış uç cihazlar arasında veri parçalarının ağ üzerinden değişimini sunar
+2-Data Link/Veri Bağı: Ortak bir medya üzerinden cihazlar arasında veri çerçevelerini değişim yöntemlerini tanımlar
+1-Physical: Mekanik, elektriksel, işlevsel ve prosedürel yöntemlerle bit iletimini başlatma, sürdürme ve sondanlardırma için fiziksel bağlantıları tanımlar.
+
+### RECEIVER
+1-2-3-4-5-6-7
+
+
+Üst katmanlar 7-6-5
+Alt katmanlar 4-3-2-1
+
+## OSI & TCP/IP Reference Models
+
+| OSI Layer | OSI Name     | TCP/IP Layer        |
+|-----------|--------------|---------------------|
+| 7         | Application  |                     |
+| 6         | Presentation | Application         |
+| 5         | Session      |_____________________|
+| 4         | Transport    | Transport __________|
+| 3         | Network      | Internet  __________|
+| 2         | Data Link    |                     |
+| 1         | Physical     | Network Access      |
+
+- OSI 7 katmanlı, TCP/IP 4 katmanlı bir modeldir.
+- TCP/IP'de Application, OSI'nin üst 3 katmanını (7, 6, 5) tek başına karşılar.
+- TCP/IP'de Network Access, OSI'nin alt 2 katmanını (2, 1) birlikte karşılar.
+- OSI teorik referans modeldir, TCP/IP internetin gerçekte kullandığı modeldir.
+
+
+
+
