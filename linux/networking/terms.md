@@ -176,3 +176,29 @@ Elektromanyetik Parazit = EMI
 - STP (Shielded Twisted Pair): ekranlı, parazite daha dayanıklı.
 - S/FTP: hem çiftler hem tüm kablo ekranlı.
 - Ekranlama, elektriksel parazite (girişim) karşı korur.
+
+## Cabling (T568A / T568B)
+
+| Pin | Signal | T568A          | T568B          |
+|-----|--------|----------------|----------------|
+| 1   | TX+    | White/Green    | White/Orange   |
+| 2   | TX-    | Green          | Orange         |
+| 3   | RX+    | White/Orange   | White/Green    |
+| 4   |        | Blue           | Blue           |
+| 5   |        | White/Blue     | White/Blue     |
+| 6   | RX-    | Orange         | Green          |
+| 7   |        | White/Brown    | White/Brown    |
+| 8   |        | Brown          | Brown          |
+
+Fark: yeşil ve turuncu çiftler yer değiştirir.
+
+- Straight-through (düz): iki uç aynı standart (A-A veya B-B). Farklı cihazları bağlar (PC - switch).
+- Crossover (çapraz): bir uç A, diğer uç B. Aynı cihazları bağlar (PC - PC, switch - switch).
+- Auto-MDIX: modern cihazlar kablo türünü otomatik algılar.
+
+## TX / RX
+TX = Transmit (gönder), RX = Receive (al).
++ ve - : bir sinyali taşıyan çiftin iki teli (biri sinyal, biri ters sinyal).
+Amaç: parazite (noise) karşı koruma. Bükümlü çift (twisted pair) de bunun için.
+
+
