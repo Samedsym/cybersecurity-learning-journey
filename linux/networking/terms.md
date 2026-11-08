@@ -103,7 +103,7 @@ IP: Mesajların göndericiden alıcıya ulaştırılmasında sorumludur.
 
 Ethernet: Aynı yerel ağ 'LAN' üzerindeki iki ağ kartı arasında mesaj iletimini sağlar
 
-# OSI (Open System Interconnection)
+## OSI (Open System Interconnection)
 ### SENDER
 7-Application/Uygulama: İşlemden işleme iletişim için kullanılan protokolleri içerir.
 6-Presentation/Sunum: Uygulama katmanı servisleri arasında aktarılan verilerin ortak temsilini sağlar.
@@ -201,4 +201,21 @@ TX = Transmit (gönder), RX = Receive (al).
 + ve - : bir sinyali taşıyan çiftin iki teli (biri sinyal, biri ters sinyal).
 Amaç: parazite (noise) karşı koruma. Bükümlü çift (twisted pair) de bunun için.
 
+Throughput(Verim): Ağ tıkanıklığı, yönlendirme gecikemeleri veya donanım sınırlandırmaları nedeniyle gerçekleşen tüm olayları'da hesaplayarak gerçekte ağ üzerinden geçen veri miktarını gösterir.
+Goodput(Net Veri Verimi): Throughput'dan TCP başlıkları gibi ek verileri çıkararak geriye kalan net veriyi gösterir.
 
+## Ağ Bileşenleri
+Cihazlar(Devices)
+İletim Ortamı (Networking Media)
+Services
+
+### Üç Katmanlı Ağ Mimarisi (Three-Tier Architecture)
+Acces Layer: Cihazların ağa fiziksel olarak bağlandığı ilk noktadır."Access switch"
+Görevleri:
+VLAN erişimis ağlamak. 
+Son kullanıcıyı ağa bağlamak.
+Port Güvenliği, MAC filtreleme vb. temel güvenlik kontrolleri
+
+Distribution Layer:Access switch’leri toplar, aralarındaki trafiği yönlendirir, kuralları uygular. "Router, Layer 3 Switch"
+
+Core Layer:	Ağın omurgası, en yüksek hızda ve kesintisiz taşır "Güçlü Core Switch, Router"
