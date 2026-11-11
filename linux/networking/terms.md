@@ -219,3 +219,35 @@ Port Güvenliği, MAC filtreleme vb. temel güvenlik kontrolleri
 Distribution Layer:Access switch’leri toplar, aralarındaki trafiği yönlendirir, kuralları uygular. "Router, Layer 3 Switch"
 
 Core Layer:	Ağın omurgası, en yüksek hızda ve kesintisiz taşır "Güçlü Core Switch, Router"
+
+## OSI Reference Model
+
+| No | Layer        | Görevi                                   | PDU                | Cihaz                  |
+|----|--------------|------------------------------------------|--------------------|------------------------|
+| 7  | Application  | Uygulamalara ağ servisi sağlar           | Data               | Default Gateway        |
+| 6  | Presentation | Veri dönüşümü, şifreleme, sıkıştırma     | Data               | Default Gateway        |
+| 5  | Session      | Oturum açar, yönetir, kapatır            | Data               | Default Gateway        |
+| 4  | Transport    | Veriyi parçalar, uçtan uca taşır         | Segment / Datagram | Default Gateway        |
+| 3  | Network      | IP adresleme ve yönlendirme              | Packet             | Router, L3 Switch      |
+| 2  | Data Link    | MAC ile komşuya teslim, hata tespiti     | Frame              | Bridge, L2 Switch, NIC |
+| 1  | Physical     | Bitleri sinyal olarak iletir             | Bit                | Repeater, Hub          |
+
+- 7-5: host layers (ana bilgisayar katmanları), 4-1: media layers (ortam katmanları).
+- PDU (Protocol Data Unit): verinin bir katmanda aldığı biçim ve ona verilen isim.
+- Encapsulation: veri yukarıdan aşağıya inerken her katman kendi header'ını ekler.
+- Decapsulation: alıcı tarafta her katman kendi header'ını çıkarır.
+- Sıra: Data -> Segment -> Packet -> Frame -> Bit.
+- Cihazlar: Router = Layer 3, Switch = Layer 2, Hub = Layer 1.
+- Hafıza cümlesi (7 -> 1): All People Seem To Need Data Processing.
+
+Kısacası: üstte uygulama, ortada taşıma ve adresleme, altta fiziksel iletim. Aynı veri her katmanda farklı bir PDU adıyla sarılır.
+
+## PDU (Protocol Data Unit)
+Verinin bir katmanda aldığı biçim ve ona verilen isimdir.
+Encapsulation: yukarıdan aşağıya her katman kendi header'ını ekler.
+Decapsulation: alıcı tarafta her katman kendi header'ını çıkarır.
+
+Data (7-5) -> Segment/Datagram (4) -> Packet (3) -> Frame (2) -> Bit (1)
+
+Kısacası: aynı veri, her katmanda farklı bir isimle sarılır.
+
