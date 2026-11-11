@@ -220,6 +220,7 @@ Distribution Layer:Access switch’leri toplar, aralarındaki trafiği yönlendi
 
 Core Layer:	Ağın omurgası, en yüksek hızda ve kesintisiz taşır "Güçlü Core Switch, Router"
 
+<<<<<<< HEAD
 ## OSI Reference Model
 
 | No | Layer        | Görevi                                   | PDU                | Cihaz                  |
@@ -250,4 +251,44 @@ Decapsulation: alıcı tarafta her katman kendi header'ını çıkarır.
 Data (7-5) -> Segment/Datagram (4) -> Packet (3) -> Frame (2) -> Bit (1)
 
 Kısacası: aynı veri, her katmanda farklı bir isimle sarılır.
+=======
+### Uç Cihaz Adreslemesi
+IP Adresi: Cihazın ağ üzerindeki kimliğidir.Hostu tanımlar.
+Alt Ağ Maskesi (Subnet Mask): Cihazın bağlı olduğu ağı tanımlar.
+Varsayılan Ağ Geçidi (Default Gateway): Cihazın internete veya başka uzak ağlara erişmek için kullandığı yönlendirici cihazı tanımlar.
+DNS: Domain Name System. Alan adlarını IP adreslerine çeviren sistemdir.
+
+## Ethernet
+### Kablolu Ağ Teknolojisi
+
+Kablolu ağlar üzerinden veri alışverişi yapmasını sağlayan teknolojidir. 
+OSI modelinin iki katmanında çalışır:
+Fiziksel Katman(Layer 1): Elektrik sinyallerinin, kabloların, bağlantı uçlarının standartını belirler.
+Veri Bağlantı Katmanı(Layer 2): Verinin frame halinde nasıl paketleneceğini ve hedef cihaza nasıl gönderileceğini tanımlar.
+
+### Ethernet MAC Adresi
+Cihazın fiziksel adresidir. 48 Bitlik adrestir. 16lık sayı sisteminde yazılmıştır. Ağ birim kartının üzerinde yazılıdır.
+
+### MAC Address Format
+48 bit = 12 hex digit (örnek: 00:60:2F:3D:32:1A).
+- İlk yarı (24 bit): OUI, üretici firmayı gösterir (Cisco, Intel gibi).
+- İkinci yarı (24 bit): üreticinin cihaza verdiği benzersiz numara.
+- first half = vendor, second half = device.
+
+## Unicast / Multicast / Broadcast
+- Unicast: tek bir cihaza gönderilen mesaj (bire bir).
+- Multicast: belirli bir gruba gönderilen mesaj (bire birkaç).
+- Broadcast: aynı ağdaki herkese gönderilen mesaj (bire hepsi).
+  MAC adresi: FF:FF:FF:FF:FF:FF
+- Bir cihaz, bir grup ya da herkes.
+
+## DHCP
+Ağa bağlanan cihaza IP adresini otomatik verir (IP, subnet mask, gateway, DNS).
+Kısacası: otomatik IP dağıtımı.
+
+## ARP
+IP adresinin MAC adresini bulur. Soru broadcast ile gider, cevap unicast ile döner.
+Kısacası: "Bu IP kimde?" sorusu.
+
+>>>>>>> f492d47c2c37a2ed72bbfb0724bd549f26fd9267
 
