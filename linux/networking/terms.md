@@ -290,5 +290,53 @@ Kısacası: otomatik IP dağıtımı.
 IP adresinin MAC adresini bulur. Soru broadcast ile gider, cevap unicast ile döner.
 Kısacası: "Bu IP kimde?" sorusu.
 
->>>>>>> f492d47c2c37a2ed72bbfb0724bd549f26fd9267
+# IP
+## OSI Referans Modeli
 
+7 katmanlı modeldir. Her katmanın görevi, veri birimi (PDU) ve cihazı vardır.
+### Katmanlar
+
+- **7. Uygulama:** Kullanıcı uygulamalarına servis sağlar. PDU: Veri. Cihaz: Ağ Geçidi.
+- **6. Sunum:** Veriyi dönüştürür, yeniden düzenler. PDU: Veri. Cihaz: Ağ Geçidi.
+- **5. Oturum:** Oturum oluşturur, yönetir, durdurur. PDU: Veri. Cihaz: Ağ Geçidi.
+- **4. Taşıma:** Veriyi paket boyutunda parçalara böler. PDU: Segment / Datagram. Cihaz: Ağ Geçidi.
+- **3. Ağ:** Mantıksal adresleme (IP) ve yönlendirme. PDU: Paket. Cihaz: Router, L3 Switch.
+- **2. Veri Bağı:** Çerçeveleme, fiziksel adresleme (MAC), hata tespiti. PDU: Çerçeve. Cihaz: Bridge, L2 Switch, NIC.
+- **1. Fiziksel:** Veriyi bit olarak iletir (kablo/medya). PDU: Bit. Cihaz: Repeater, Hub.
+
+## Notlar
+
+- **Ana Bilgisayar katmanları:** 5-7
+- **Ortam katmanları:** 1-4 (slayttaki gruplama; bazı kaynaklar Taşıma'yı ana bilgisayar katmanına dahil eder)
+- **Veri birimi sırası (1 → 7):** Bit → Çerçeve → Paket → Segment/Datagram → Veri
+
+## Network Layer 3
+IP bilgisayar ağlarında verilen iletimini sağlayan temel protokollerden biridir.
+
+-IP verileri küçük paketlere ayırır
+-Her paketin header'ında kaynak ve hedefin IP adresi bulunur.
+-Paketler ağlar arasında router aracılığıyla iletilir.
+
+## Protokol
+IPv4: Taşıma katmanından gelen ileti parçalarını alır, bu iletiler paketler haline getirilir, paketleri adresler ve ağ üzerinde uçtan uca teslimat için yönlendirir. 32 bitlik adres yapısı kullanır
+
+IPv6: IPv4'e benzer ama 128 bitlik adres yapısına sahiptir.IPsec desteği, Multicast desteği.
+Genişletilmiş Adres Alanı: 128 Bit adresler
+Dahili Güvenlik: IPsec
+Daha İyi Çoklu Yayın: Multicast
+
+NAT(Ağ adresi çevirici): private bir ağdaki IPv4 adreslerini global olarak benzersiz olan public IPv4 adreslerine çevirir.
+
+## IP Özellikleri
+Düşük ek yükle tasarlanmış bir protokoldür.
+
+Connectionless: Veri paketlerini göndermeden önce hedefle bağlantı kurulmaz.
+Best Effort: IP doğası gereği güvenilmezdir çünkü paket teslimi garanti edilmez. TCP gibi üst katmanlara bırakır.
+Media Independent: Veriyi taşıyan ortamdan bağımsızdır. Esnek ve uyumludur.
+
+MTU(Maximum Transmission Unit): Bir ağ bağlantısından tek seferde gönderilebilecek en büyük paket boyutudur, bayt cinsinden ölçülür.Ethernette standard MTU 1500 bayttır. IP paketinin header dahil alabileceği en büyük boyuttur.
+
+MTU: IP paketinin en büyük boyutu (Layer3).
+MSS: TCP'nin tek segmentte taşıyabileceği veri boyutu. Yaklaşık olarak MTU -40bayt (20 bayt IP+20 bayt TCP başlığı), yani ethernette 1460 bayt.
+
+CIDR: Classes Inter Domain Routing
