@@ -340,3 +340,154 @@ MTU: IP paketinin en büyük boyutu (Layer3).
 MSS: TCP'nin tek segmentte taşıyabileceği veri boyutu. Yaklaşık olarak MTU -40bayt (20 bayt IP+20 bayt TCP başlığı), yani ethernette 1460 bayt.
 
 CIDR: Classes Inter Domain Routing
+
+# IP Adres Sınıfları
+
+> Kaynak: BTK Akademi, Bilgisayar Ağlarına Giriş
+
+## Oktet
+- IPv4 adresi 32 bittir, 4 oktete bölünür. Oktet = 8 bit.
+- Her oktet 0-255 arasındadır (2^8 = 256 değer).
+- Örnek: `192.168.1.25` → 1. oktet 192, 4. oktet 25.
+
+## Sınıflar
+Sınıfı IP'nin **ilk sayısı (ilk oktet)** belirler. CIDR belirlemez.
+
+- **A:** 1-126, varsayılan /8, 16.777.214 cihaz, çok büyük ağlar
+- **B:** 128-191, varsayılan /16, 65.534 cihaz, orta büyük ağlar
+- **C:** 192-223, varsayılan /24, 254 cihaz, küçük ağlar
+- **D:** 224-239, multicast (grup yayını)
+- **E:** 240-255, deneysel, kullanılmaz
+- **127.x.x.x:** loopback (cihazın kendisi), örn. 127.0.0.1
+
+## Sabit bit deseni
+İlk 0'a kadar kaç tane 1 varsa sınıf odur:
+- A: `0xxxxxxx`
+- B: `10xxxxxx`
+- C: `110xxxxx`
+- D: `1110xxxx`
+
+## Özel (private) aralıklar
+İç ağlarda kullanılır, internete doğrudan çıkmaz. Sınıftan bağımsız bir konudur.
+- `10.0.0.0/8` (A)
+- `172.16.0.0/12` (B)
+- `192.168.0.0/16` (C)
+
+Bunların dışındaki adresler genel (public) adrestir.
+
+## Not
+- Sınıf sistemi artık kullanılmıyor, yerini CIDR aldı. Sınavlarda ve terimlerde hâlâ geçiyor.
+- Sınıf = IP'nin ilk sayısı. Özel/genel = ayrı bir konu.
+
+# CIDR ve Subnetting
+
+## CIDR nedir?
+- IP adresi ve ağ büyüklüğünü birlikte yazma yöntemi: `192.168.1.0/24`
+- `/24` = ilk 24 bit ağ kısmı, kalan bitler cihaz (host) kısmı.
+- `/24` ile `255.255.255.0` (subnet mask) aynı şeydir.
+- CIDR 0-32 arası her değer olabilir, 8'in katları zorunlu değil.
+
+## Cihaz sayısı
+- Host biti = 32 - CIDR
+- Cihaz sayısı = 2^(host biti) - 2
+- 2 adres ayrılmıştır: ağ adresi (ilk) ve broadcast (son).
+- IP'nin değeri cihaz sayısını etkilemez, sadece CIDR belirler.
+- Örnek: `/8` → 24 bit → 2^24 - 2 = 16.777.214
+
+## Sık kullanılan CIDR'lar
+- /24: mask 255.255.255.0, 254 cihaz
+- /25: mask 255.255.255.128, 126 cihaz
+- /26: mask 255.255.255.192, 62 cihaz
+- /27: mask 255.255.255.224, 30 cihaz
+- /28: mask 255.255.255.240, 14 cihaz
+- /29: mask 255.255.255.248, 6 cihaz
+- /30: mask 255.255.255.252, 2 cihaz
+
+## Mask nasıl bulunur?
+Son oktette soldan her ağ biti şunu ekler: 128, 64, 32, 16, 8, 4, 2, 1
+- /26 → 128 + 64 = 192
+- /27 → 128 + 64 + 32 = 224
+## Mask mantığı
+- Mask: ağ bitleri 1, cihaz bitleri 0 olarak yazılır.
+- /26 → 11111111.11111111.11111111.11000000 → 255.255.255.192
+
+## Blok boyutu (atlama miktarı)
+- Blok boyutu = 256 - mask
+- /26 → 256 - 192 = 64 → bloklar: 0, 64, 128, 192
+- /27 → 256 - 224 = 32 → bloklar: 0, 32, 64, 96...
+
+## Hangi oktette bölünür?
+- /1-/8: 1. oktet
+- /9-/16: 2. oktet
+- /17-/24: 3. oktet
+
+- /25-/32: 4. oktet
+- Cihaz biti 8'den fazlaysa cihaz kısmı bir önceki oktete de taşar.
+
+## Örnek: 192.168.1.72/26
+- 72, .64-.127 bloğunda
+- Ağ adresi: 192.168.1.64
+- Kullanılabilir: 192.168.1.65 - 192.168.1.126
+- Broadcast: 192.168.1.127
+- Cihaz sayısı: 62
+
+## Neden CIDR?
+Sınıf sistemi çok israfa yol açıyordu (300 cihaz için C yetmiyor, B çok fazla). CIDR ile ağ ihtiyaca göre boyutlandırılır.
+
+## Alt Ağ Maskesi(Subnet Mask)
+IP adresi , network, host kısımlardan oluşmaktadır.
+Network adresi, belirli bir ağa ait olan tüm cihazların grup adresidir.
+Host adresi ise o ağdaki belirli bir cihaza ait benzersiz adrestir.
+
+### Not: 
+/30 iki network'ün birbiri ile point to point konuştuğu (özellikle WAN servislerinde) aynı networke sadece 2 tane IP adresine ihtiyaç duyulur.
+
+P2P için kullanılabilecek en verimli IP maskesi CIDR gösterimi = /30
+
+## Private IP - Public IP
+IANA (Internet Assign Numbers Authority) Dünyayı 5 bölgeye ayırarak Regional Internet Registry (RIR) firmaları aracılığı ile IP adreslerini dağıtmıştır. RIR olarak bilinen kuruluşlar:
+ARIN: Kuzey Amerika
+LACNIC: Latin Amerika
+RIPE: Avrupa
+AFRINIC: Afrika
+APNIC: Asya Pasifik
+
+### 127.0.0.1 - Loopback Adress
+Cihazın kendi ağ arabirim kartı üzerinden döner. TCP/IP protokolleri üzeirnden iç yolun çalıştığını doğrulamak için test amacıyla kullanılır.
+
+### APIPA - Automatic Private IP Addressing
+169.254.x.y
+255.255.0.0 subnet mask
+Yönlendirelemez
+Link Localde kalmayı sağlar.
+
+# Özel (Private) ve Genel (Public) IP
+
+## Özel IP (LAN, iç arayüz)
+- Yerel ağın içinde kullanılır, örnek: 192.168.1.1
+- Aralıklar: `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`
+- Benzersiz olmak zorunda değil, farklı ağlarda aynı olabilir.
+- İnternette doğrudan kullanılamaz.
+
+## Genel IP (WAN, dış arayüz)
+- İnternette kullanılır, örnek: 84.15.186.115
+- ISP verir.
+- Dünyada benzersizdir.
+- İnternetten ulaşılabilir.
+
+## Diyagram
+- Üç ağın da iç adresi aynı (192.168.1.1), ama WAN tarafında farklı genel IP'leri var.
+- Özel IP'ler çakışmaz, çünkü her biri kendi ağının içinde kalır.
+
+## Interface (Arayüz)
+- Router'ın ağa bağlandığı bağlantı noktası. Her arayüzün kendi IP'si olur.
+- **Internal interface (iç arayüz):** Router'ın LAN'a bakan tarafı, özel IP taşır.
+- **External interface (dış arayüz):** Router'ın internete (WAN) bakan tarafı, genel IP taşır.
+
+## LAN ve WAN
+- LAN (Local Area Network): Yerel ağ, evin ya da iş yerinin iç ağı.
+- WAN (Wide Area Network): Geniş ağ, internet tarafı.
+
+## Note
+- Özel IP: farklı ağlarda aynı olabilir (herkesin kendi ağı var).
+- Genel IP: dünyada benzersiz, her ağın (evin) bir tane, o ağdaki tüm cihazlar internete bu IP ile çıkar.
